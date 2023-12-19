@@ -45,7 +45,8 @@ datascience_jobs %>% select(salary_estimate) %>% distinct()
 
 datascience_jobs <- datascience_jobs %>%
                     mutate(salary_estimate = str_sub(salary_estimate, 1, 11),
-                           salary_estimate = gsub("\\(","",salary_estimate))
+                           salary_estimate = gsub("\\(","",salary_estimate),
+                           salary_estimate = trimws(salary_estimate))
 
 #-- Company Name column
 datascience_jobs %>% select(company_name) %>% distinct() 
@@ -95,3 +96,7 @@ View(datascience_jobs)
 
 # SAVING DATA
 write_csv(datascience_jobs,"DS_jobs_cleaned.csv")
+
+
+
+
